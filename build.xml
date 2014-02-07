@@ -143,6 +143,18 @@
             <classpath refid="project.class.path"/>
         </java>
     </target>
+	
+    <target name="pebble" depends="compile">
+        <java classname="teb.Pebble" output="output/pebble.html" logError="true" fork="true">
+            <jvmarg value="-server"/>
+            <sysproperty  key="out" value="${out}"/>
+            <sysproperty  key="wtimes" value="${wtimes}"/>
+            <sysproperty  key="ntimes" value="${ntimes}"/>
+            <sysproperty  key="buf" value="${buf}"/>
+            <classpath location="classes"/>
+            <classpath refid="project.class.path"/>
+        </java>
+    </target>
 
     <target name="thymeleaf" depends="compile">
         <java classname="teb.Thymeleaf" output="output/thymeleaf.html" logError="true" fork="true">
@@ -173,8 +185,8 @@
         </echo>
     </target>
 
-    <target name="selected" depends="header,stringbuilder,freemarker,velocity,rythm,jamon,httl,jmte"></target>
-    <target name="all" depends="header,stringbuilder,freemarker,velocity,rythm,jamon,httl,jmte,jangod,thymeleaf"></target>
+    <target name="selected" depends="header,stringbuilder,freemarker,velocity,rythm,jamon,httl,jmte,pebble"></target>
+    <target name="all" depends="header,stringbuilder,freemarker,velocity,rythm,jamon,httl,jmte,jangod,thymeleaf,pebble"></target>
     
     <target name="help">
         <echo>
