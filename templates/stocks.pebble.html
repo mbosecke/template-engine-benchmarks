@@ -3,7 +3,7 @@
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
  <head>
-  <title>Stock Prices - JangoD</title>
+  <title>Stock Prices - Pebble</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta http-equiv="Content-Script-Type" content="text/javascript" />
@@ -53,7 +53,7 @@ thead {
    <tbody>
 {% for item in items %}
     <tr class="{% if loop.index % 2 == 0 %}even{% else %}odd{% endif %}">
-     <td style="text-align: center">{{loop.counter}}</td>
+     <td style="text-align: center">{{loop.index}}</td>
      <td>
       <a href="/stocks/{{item.symbol}}">{{item.symbol}}</a>
      </td>

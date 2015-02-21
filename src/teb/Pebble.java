@@ -27,13 +27,14 @@ public class Pebble extends _BenchBase {
     
     public Pebble() {
         engine = new PebbleEngine(new FileLoader());
+        engine.setStrictVariables(true);
     }
 
     @Override
     public void execute(Writer w0, Writer w1, int ntimes, List<Stock> items) throws Exception {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("items", items);
-        
+
         while (--ntimes >= 0) {
             PebbleTemplate template = engine.getTemplate(templateName);
             if (ntimes == 0) {
@@ -74,10 +75,10 @@ public class Pebble extends _BenchBase {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("items", items);
         StringWriter writer = null;
-        
+
         while (--ntimes >= 0) {
-            writer = new StringWriter();
             PebbleTemplate template = engine.getTemplate(templateName);
+            writer = new StringWriter();
             template.evaluate(writer, params);
         }
         
