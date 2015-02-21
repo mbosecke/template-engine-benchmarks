@@ -4,3 +4,6 @@ out/
 .idea/
 *.iml
 classes
+/bin/
+.classpath
+.project
