@@ -16,17 +16,16 @@ import java.util.Map;
 import teb.model.Stock;
 
 import com.mitchellbosecke.pebble.PebbleEngine;
-import com.mitchellbosecke.pebble.loader.FileLoader;
 import com.mitchellbosecke.pebble.template.PebbleTemplate;
-
 
 public class Pebble extends _BenchBase {
 
     PebbleEngine engine;
+
     private String templateName = "templates/stocks.pebble.html";
-    
+
     public Pebble() {
-        engine = new PebbleEngine(new FileLoader());
+        engine = new PebbleEngine();
         engine.setStrictVariables(true);
     }
 
@@ -39,8 +38,7 @@ public class Pebble extends _BenchBase {
             PebbleTemplate template = engine.getTemplate(templateName);
             if (ntimes == 0) {
                 template.evaluate(w1, params);
-            }
-            else {
+            } else {
                 template.evaluate(w0, params);
             }
         }
@@ -53,7 +51,7 @@ public class Pebble extends _BenchBase {
         params.put("items", items);
         Writer w1 = new OutputStreamWriter(o1);
         Writer w0 = new OutputStreamWriter(o0);
-        
+
         if (_BenchBase.bufferMode.get()) {
             w0 = new BufferedWriter(w0);
             w1 = new BufferedWriter(w1);
@@ -62,8 +60,7 @@ public class Pebble extends _BenchBase {
             PebbleTemplate template = engine.getTemplate(templateName);
             if (ntimes == 0) {
                 template.evaluate(w1, params);
-            }
-            else {
+            } else {
                 template.evaluate(w0, params);
             }
         }
@@ -81,7 +78,7 @@ public class Pebble extends _BenchBase {
             writer = new StringWriter();
             template.evaluate(writer, params);
         }
-        
+
         return writer.toString();
     }
 
